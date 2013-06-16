@@ -107,4 +107,14 @@ describe User do
     end
   end
 
+  describe "email address with mixed case" do
+    let(:mixed_email_address) { "Foo@ExAMPle.COM"}
+
+    it "should be saved as all downn-case" do
+      @user.email = mixed_email_address
+      @user.save
+      @user.reload.email.should == mixed_email_address.downcase
+    end
+  end
+
 end
